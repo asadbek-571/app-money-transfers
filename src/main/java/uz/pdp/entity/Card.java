@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -26,11 +27,11 @@ public class Card {
     private String number;
 
     @Column(name = "balance")
-    private Long balance;
+    private Double balance;
 
     @Column(name = "expire_date", nullable = false)
-    private LocalDate expireDate;
+    private Date expireDate;
 
     @Column(name = "active", nullable = false)
-    private boolean active;
+    private boolean active=true;
 }

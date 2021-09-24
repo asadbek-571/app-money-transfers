@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -22,18 +23,18 @@ public class Outcome {
 
     @ManyToOne
     @JoinColumn(name = "form_card_id", nullable = false)
-    private Card fromCardId;
+    private Card fromCard;
 
     @ManyToOne
     @JoinColumn(name = "to_card_id", nullable = false)
-    private Card toCardId;
+    private Card toCard;
 
     @Column(name = "amount", nullable = false)
-    private Long amount;
+    private Double amount;
 
-    @Column(name = "date", nullable = false)
-    private Timestamp date;
+    @Column(columnDefinition = "timestamp default now()")
+    private Timestamp date = Timestamp.valueOf(LocalDateTime.now());
 
     @Column(name = "commission_amount", nullable = false)
-    private Long commissionAmount;
+    private Double commissionAmount;
 }
